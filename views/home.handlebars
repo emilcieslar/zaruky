@@ -1,0 +1,185 @@
+<div class="row margin-top-20">
+	<div class="large-12 columns">
+		<div class="callout panel">
+			<h3>Záruky webová aplikace</h3>
+			<p>Pro přidání záruky do seznamu klikněte na tlačítko "Přidat záruku".
+			<br>Pro úpravu záruky kliněte na tlačítko "Upravit" vedle záruky, kterou chcete upravit.
+			<br>Pro odstranění záruky ze seznamu klikněte na tlačítko "Odstranit" vedle záruky, kterou chcete odstranit.</p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-12 columns">
+		 <a href="#" data-reveal-id="pridat-zaruku" class="medium success button">Přidat záruku</a>
+	</div>
+</div>
+
+ <div class="row">
+	<div class="large-12 columns">
+		 <table id="vypis-zaruk">
+		 	<tr>
+		 		<th>Název produktu</th>
+		 		<th>Datum zakoupení</th>
+		 		<th>Délka záruky</th>
+		 		<th>Obchod</th>
+		 		<th>Místo uložení záruky</th>
+		 		<th>Datum opravy</th>
+		 		<th>Datum ukončení opravy</th>
+		 		<th>Datum konce záruky</th>
+		 	</tr>
+
+		 	{{#each zaruky}}
+		 		<tr upravit-id="{{_id}}">
+		 			<td>{{name}}</td>
+		 			<td>{{date_bought_string}}</td>
+		 			<td>{{w_length}}</td>
+		 			<td>{{shop}}</td>
+		 			<td>{{place_stored}}</td>
+		 			<td>{{date_repair_start_string}}</td>
+		 			<td>{{date_repair_end_string}}</td>
+		 			<td>{{date_w_end}}</td>
+		 			<td><a data-reveal-id="upravit-zaruku" upravit-id="{{_id}}" href="#" class="small button no-margin-bottom upravit-zaruku">Upravit</a></td>
+		 			<td><a data-reveal-id="odstranit-zaruku" odstranit-id="{{_id}}" href="#" class="small alert button no-margin-bottom odstranit-zaruku">Odstranit</a></td>
+		 		</tr>
+		 	{{/each}}
+		 </table>
+	</div>
+</div>
+
+<!-- FORM PRIDAT ZARUKU -->
+<div id="pridat-zaruku" class="reveal-modal" data-reveal>
+	<h3>Přidat záruku</h3>
+	<form action="/add" method="post">
+		<div class="row">
+			<div class="large-4 medium-4 columns">
+				<label>Název produktu</label>
+				<input type="text" name="nazev" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Datum zakoupení</label>
+				<input id="datum-zakoupeni" name="datum_zakoupeni" type="text" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Délka záruky (roky)</label>
+				<select name="delka_zaruky">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</div>
+		</div><!-- row -->
+		<div class="row">
+			<div class="large-4 medium-4 columns">
+				<label>Obchod</label>
+				<input type="text" name="obchod" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Místo uložení záruky</label>
+				<input type="text" name="misto_ulozeni" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				
+			</div>
+		</div><!-- row -->
+		<div class="row">
+			<div class="large-4 medium-4 columns">
+				<label>Datum opravy</label>
+				<input id="datum-opravy" type="text" name="datum_opravy" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Datum ukončení opravy</label>
+				<input id="datum-ukonceni-opravy" type="text" name="datum_ukonceni_opravy" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				
+			</div>
+		</div><!-- row -->
+		<div class="row">
+			<div class="large-4 columns">
+				<input type="submit" value="Přidat záruku" name="pridat_zaruku_final" id="pridat-zaruku-final" class="medium success button">
+			</div>
+		</div><!-- row -->
+				
+	</form><!-- form -->
+	<a class="close-reveal-modal">&#215;</a>
+</div><!-- pridat-zaruku -->
+
+<!-- FORM UPRAVIT ZARUKU -->
+<div id="upravit-zaruku" class="reveal-modal" data-reveal>
+	<h3>Upravit záruku</h3>
+	<form action="/edit" method="post">
+		<div class="row">
+			<div class="large-4 medium-4 columns">
+				<label>Název produktu</label>
+				<input type="text" name="nazev" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Datum zakoupení</label>
+				<input id="datum-zakoupeni-upravit" name="datum_zakoupeni" type="text" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Délka záruky (roky)</label>
+				<select name="delka_zaruky">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</div>
+		</div><!-- row -->
+		<div class="row">
+			<div class="large-4 medium-4 columns">
+				<label>Obchod</label>
+				<input type="text" name="obchod" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Místo uložení záruky</label>
+				<input type="text" name="misto_ulozeni" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				
+			</div>
+		</div><!-- row -->
+		<div class="row">
+			<div class="large-4 medium-4 columns">
+				<label>Datum opravy</label>
+				<input id="datum-opravy-upravit" type="text" name="datum_opravy" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<label>Datum ukončení opravy</label>
+				<input id="datum-ukonceni-opravy-upravit" type="text" name="datum_ukonceni_opravy" />
+			</div>
+			<div class="large-4 medium-4 columns">
+				<input type="hidden" name="zaruka_id" />
+			</div>
+		</div><!-- row -->
+		<div class="row">
+			<div class="large-4 columns">
+				<input type="submit" value="Upravit záruku" name="upravit-zaruku-final" id="upravit-zaruku-final" class="medium success button">
+			</div>
+		</div><!-- row -->
+				
+	</form><!-- form -->
+	<a class="close-reveal-modal">&#215;</a>
+</div><!-- upravit-zaruku -->
+
+
+<div id="odstranit-zaruku" class="reveal-modal small" data-reveal>
+	<h3>Opravu chcete odstranit záruku výrobku <span></span></h3>
+	<form action="/remove" method="post">
+		<div class="row">
+			<div class="large-12 columns margin-top-20">
+				<input type="submit" value="Odstranit záruku" name="odstranit-zaruku-final" id="odstranit-zaruku-final" class="medium alert button" style="margin-right: 10px;">
+				<a href="#" id="zrusit-odstraneni" class="medium button">Zrušit</a>
+				<input type="hidden" name="odstranit_zaruka_id" />
+			</div>
+		</div><!-- row -->
+	</form><!-- form -->
+	<a class="close-reveal-modal">&#215;</a>
+</div><!-- smazat-zaruku -->

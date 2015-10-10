@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Záruky</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/modernizr.js"></script>
+  </head>
+<body>
+	<!-- FACEBOOK API -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=433434876855802";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- The actual content of the page -->
+	{{{body}}}
+
+	<script src="js/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/foundation/foundation.reveal.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script>
+	$(function() {
+		$( "#datum-zakoupeni, #datum-zakoupeni-upravit" ).datepicker();
+		$( "#datum-zakoupeni, #datum-zakoupeni-upravit" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+		$( "#datum-opravy, #datum-opravy-upravit" ).datepicker();
+		$( "#datum-opravy, #datum-opravy-upravit" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+		$( "#datum-ukonceni-opravy, #datum-ukonceni-opravy-upravit" ).datepicker();
+		$( "#datum-ukonceni-opravy, #datum-ukonceni-opravy-upravit" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+	});
+	</script>
+    <script>
+      $(document).foundation();
+      $(document).ready(function() { 
+	      $('#pridat-zaruku-final').click(function() {
+	      	$('#pridat-zaruku').foundation('reveal','close');
+	      });
+	      $('#upravit-zaruku-final').click(function() {
+	      	$('#upravit-zaruku').foundation('reveal','close');
+	      });
+	      $('#odstranit-zaruku-final').click(function() {
+	      	$('#odstranit-zaruku').foundation('reveal','close');
+	      });
+	      $('#zrusit-odstraneni').click(function(e) {
+	      	e.preventDefault();
+	      	$('#odstranit-zaruku').foundation('reveal','close');
+	      });
+	      
+	      $('.odstranit-zaruku').click(function() {
+	      	var odstranitId = $(this).attr('odstranit-id');
+	      	var upravitTr = $('#vypis-zaruk').find('tr[upravit-id='+odstranitId+']');
+	      	$('input[name=odstranit_zaruka_id]').val(odstranitId);
+	      	$('#odstranit-zaruku h3 span').text(upravitTr.find('td:nth-child(1)').text());
+	      });
+	      
+	      $('.upravit-zaruku').click(function() {
+	      	var upravitId = $(this).attr('upravit-id');
+	      	var upravitTr = $('#vypis-zaruk').find('tr[upravit-id='+upravitId+']');
+	      	var optionVal = upravitTr.find('td:nth-child(3)').text();
+	      	var datumOpravy = upravitTr.find('td:nth-child(6)').text();
+	      	var datumUkonceniOpravy = upravitTr.find('td:nth-child(7)').text();
+	      	if(datumOpravy == "//" || datumUkonceniOpravy == "//") {
+		      	datumOpravy = "";
+		      	datumUkonceniOpravy = "";
+	      	} 
+	      	$('input[name=zaruka_id]').val(upravitId);
+	      	$('#upravit-zaruku input[name=nazev]').val(upravitTr.find('td:nth-child(1)').text());
+	      	$('#upravit-zaruku input[name=datum_zakoupeni]').val(upravitTr.find('td:nth-child(2)').text());
+	      	$('#upravit-zaruku select[name=delka_zaruky] option[value=' + optionVal + ']').attr('selected','selected');
+	      	$('#upravit-zaruku input[name=obchod]').val(upravitTr.find('td:nth-child(4)').text());
+	      	$('#upravit-zaruku input[name=misto_ulozeni]').val(upravitTr.find('td:nth-child(5)').text());
+	      	$('#upravit-zaruku input[name=datum_opravy]').val(datumOpravy);
+	      	$('#upravit-zaruku input[name=datum_ukonceni_opravy]').val(datumUkonceniOpravy);
+	      });
+      });
+    </script>
+</body>
+</html>

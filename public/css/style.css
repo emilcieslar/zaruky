@@ -1,0 +1,15 @@
+.no-margin-bottom {
+	margin-bottom: 0;
+}
+
+.margin-top-20 {
+	margin-top: 20px;
+}
+
+.row {
+	max-width: 100%;
+}
+
+table th {
+	text-align: left;
+}

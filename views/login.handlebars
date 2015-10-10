@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="large-12 columns">
+		<h1>Přihlášení do systému</h1>
+		<!-- show any messages that come back with auth -->
+		{{#if message}}
+			<div>{{message}}</div>
+		{{/if}}
+
+		<!-- LOGIN FORM -->
+		<form action="/login" method="post">
+			<label>Email</label>
+			<input type="text" name="email">
+
+			<label>Heslo</label>
+			<input type="password" name="password">
+
+			<input type="submit" class="button" name="login" value="Přihlásit se">
+		</form>
+
+		<hr>
+    </div>
+</div>

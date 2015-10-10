@@ -1,0 +1,37 @@
+{
+  "name": "zaruky",
+  "version": "1.0.0",
+  "description": "Zaruky web application",
+  "main": "zaruky.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilcieslar/zaruky-app.git"
+  },
+  "author": "Emil Cieslar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilcieslar/zaruky-app/issues"
+  },
+  "homepage": "https://github.com/emilcieslar/zaruky-app#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "express3-handlebars": "^0.5.2",
+    "moment": "^2.10.6",
+    "mongoose": "^4.1.10",
+    "nodemon": "^1.7.1",
+    "passport": "0.2.2",
+    "passport-facebook": "^2.0.0",
+    "passport-local": "~0.1.6",
+    "connect-flash": "~0.1.1",
+    "bcrypt-nodejs": "latest",
+
+    "morgan": "~1.0.0",
+    "method-override": "~1.0.0"
+  }
+}
