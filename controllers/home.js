@@ -5,7 +5,9 @@
 
 	router.get('/', isLoggedIn, function(req, res) {
 		
-		Zaruka.find(function(err, zaruky) {
+		Zaruka.find().
+		.sort('-date_bought')
+		.exec(function(err, zaruky) {
 			if(err)
 				res.render('home', { err: 'Nenalezeny žádné záruky' })
 			else {
