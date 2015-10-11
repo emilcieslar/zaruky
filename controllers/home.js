@@ -5,7 +5,7 @@
 
 	router.get('/', isLoggedIn, function(req, res) {
 		
-		Zaruka.find().
+		Zaruka.find()
 		.sort('-date_bought')
 		.exec(function(err, zaruky) {
 			if(err)
