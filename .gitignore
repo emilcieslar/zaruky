@@ -29,3 +29,6 @@ node_modules
 
 # Local config
 credentials-local.js
+
+# DB backup
+zaruky.json
